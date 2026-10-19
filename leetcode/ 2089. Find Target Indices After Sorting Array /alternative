@@ -1,0 +1,37 @@
+package main
+
+import (
+	"fmt"
+)
+
+func targetIndices(nums []int, target int) []int {
+	count_less := 0
+	count_more := 0
+	lens := len(nums)
+
+	for _, i := range nums {
+		if i < target {
+			count_less++
+		} else if target < i {
+			count_more++
+
+		}
+
+	}
+	mapa := make([]int, 0, lens-count_less-count_more)
+	if lens-count_less-count_more > 1 {
+		for i := 0; i < lens-count_less-count_more; i++ {
+			mapa = append(mapa, count_less+i)
+		}
+	} else if lens-count_less-count_more == 1 {
+		mapa = append(mapa, count_less)
+	}
+
+	// 4 меньше 2 больше исходная позиция 4 количествое 7
+	return mapa
+}
+
+func main() {
+	fmt.Println(targetIndices([]int{1, 2, 5, 2, 3, 6, 7}, 8))
+
+}
