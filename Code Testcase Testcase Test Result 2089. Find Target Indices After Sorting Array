@@ -1,0 +1,11 @@
+func targetIndices(nums []int, target int) []int {
+	mapa := make([]int, 0, 2)
+	slices.Sort(nums)
+	for pos, y := range nums {
+		if target == y {
+			mapa = append(mapa, pos)
+		}
+	}
+
+	return mapa
+}
