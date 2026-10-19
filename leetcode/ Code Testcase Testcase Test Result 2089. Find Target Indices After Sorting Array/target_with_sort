@@ -1,1 +1,21 @@
+func targetIndices(nums []int, target int) []int {
+	mapa := make([]int, 0, 2)
 
+	for i := 0; i < len(nums); i++ {
+		for j := 0; j < len(nums); j++ {
+			if nums[j] > nums[i] {
+
+				nums[i], nums[j] = nums[j], nums[i]
+
+			}
+		}
+
+	}
+	for pos, y := range nums {
+		if target == y {
+			mapa = append(mapa, pos)
+		}
+	}
+
+	return mapa
+}
