@@ -1,0 +1,26 @@
+	package main
+
+	import (
+		"fmt"
+		"strings"
+	)
+
+	func main() {
+		s := "A man, a plan, a canal: Panama"
+		fmt.Println(isPalindrome(s))
+	}
+	func isPalindrome(s string) bool {
+		var s1 string
+		s = strings.ToLower(s)
+		for _, i := range s {
+			if (i >= 'a' && i <= 'z') || (i >= '0' && i <= '9') {
+				s1 += string(i)
+			}
+		}
+		for pos := 0; pos < len(s1)/2; pos++ {
+			if s1[pos] != s1[len(s1)-1-pos] {
+				return false
+			}
+		}
+		return true
+	}
