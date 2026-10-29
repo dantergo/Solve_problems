@@ -1,0 +1,26 @@
+func countAndSay(n int) string {
+	nums := []int{1} // без нуля
+
+	for step := 1; step < n; step++ {
+		next := []int{}
+		count := 1
+
+		for posi := 1; posi < len(nums); posi++ {
+			if nums[posi] == nums[posi-1] {
+				count++
+			} else {
+				next = append(next, count, nums[posi-1])
+				count = 1
+			}
+		}
+		next = append(next, count, nums[len(nums)-1]) // вместо нуля-стража
+
+		nums = next
+	}
+
+	res := make([]byte, len(nums))
+	for i, d := range nums {
+		res[i] = byte('0' + d)
+	}
+	return string(res)
+}
