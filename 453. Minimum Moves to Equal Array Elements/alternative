@@ -1,0 +1,11 @@
+func minMoves(nums []int) int {
+	minVal := nums[0]
+	sum := 0
+	for _, n := range nums {
+		sum += n
+		if n < minVal {
+			minVal = n
+		}
+	}
+	return sum - minVal*len(nums)
+}
