@@ -1,0 +1,33 @@
+package main
+
+import "fmt"
+
+
+
+func main() {
+	arr1 := []int{4, 5, 8}
+	arr2 := []int{10, 9, 1, 8}
+	fmt.Println(findTheDistanceValue(arr1, arr2, 2))
+
+}
+
+func findTheDistanceValue(arr1 []int, arr2 []int, d int) int {
+	c := 0
+	for _, i := range arr1 {
+		count := 0
+		for _, j := range arr2 {
+			k := i - j
+			if k < 0 {
+				k = -k
+			}
+			if k > d {
+				count++
+			}
+			if count == len(arr2) {
+				c++
+			}
+
+		}
+	}
+	return c
+}
